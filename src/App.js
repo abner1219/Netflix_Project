@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import Row from "./components/Row";
+import "./components/Row.css";
+// import requests from "./requests";
+import requests from "./components/requests";
+import Banner from "./components/Banner";
+import "./App.css";
+import Nav from "./components/Nav";
+
+// {process.env.API}//Where I need that document or password that
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	console.log(process.env);
+	return (
+		<div className="App">
+			<Nav />
+			<Banner />
+			<Row
+				title="NETFLIX ORIGINALS"
+				fetchUrl={requests.fetchNetflixOriginals}
+				isLargeRow={true} //optional, not a must to call it
+			/>
+			<Row title="Trending Now" fetchUrl={requests.fetchTrending} />
+			<Row title="Top Rated" fetchUrl={requests.fetchTopRatedMovies} />
+			<Row title="Action Movies" fetchUrl={requests.fectchActionMovies} />
+			<Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
+			<Row title="History Movies" fetchUrl={requests.fetchHistory} />
+			<Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
+			<Row
+				title="Docummentaries Movies"
+				fetchUrl={requests.fetchDocumentareis}
+			/>
+
+			<Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
+		</div>
+	);
 }
 
 export default App;
